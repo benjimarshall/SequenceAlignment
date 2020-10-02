@@ -1,0 +1,22 @@
+Phase 1 - Marshall: Parallelising Sequence Alignment
+-------------------------------------------------------------------------------
+
+Name: Benjamin John Marshall
+
+College: Sidney Sussex
+
+User Identifier: bjm58
+
+Director of Studies: Mr Matthew Ireland
+
+1. To explore the effectiveness of different computer processing technologies (namely CPUs, GPUs, and FPGAs) to solve the sequence alignment problem in Bioinformatics, particularly focussing on producing parallelised implementations. This will involve implementing solutions to find sequence alignments using these different platforms and comparing them. Success criteria: Single and multi-threaded C, and CUDA programs to find sequence alignments are produced and evaluated. I hope to produce a SystemVerilog implementation for an FPGA as an extension. Other possible extensions include investigating the performance impact of using optimising compilers to build my solutions, and using vectorised CPU instructions in my C code.
+
+2. Peter Rugg
+
+3. An FPGA development board to use to develop the SystemVerilog implementation,
+such as a DE1-SoC FPGA board used in ECAD+Arch practicals.
+Access to a high performance computer (with many CPU cores) would provide an
+interesting test environment for my C implementations, though this is not a
+necessity because devices such as my laptop or ordinary MCS workstations would
+suffice. Similarly my CUDA implementation could be tested on more powerful GPUs
+than the mobile GPU in my laptop, if a machine with such a GPU was available.

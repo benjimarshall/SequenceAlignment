@@ -1,0 +1,27 @@
+% !TeX root = ../diss.tex
+
+\chapter{Introduction}
+The Smith-Waterman (SW) algorithm is used by bioinformaticians to find similarities between DNA or protein structures.
+I implemented this algorithm using three different processor architectures: CPUs, GPUs, and FPGAs.
+All of these architectures allow for parallel computation but lend themselves to extracting parallelism from the algorithm in different ways.
+This dissertation discusses the relative strengths and weaknesses of these different architectures to implement this algorithm, and the varying approaches required for these different platforms.
+
+\section{Motivation}
+Sequence alignment involves finding the sections of two sequences that are most similar to one another, and recording how they differ.
+This can be useful when comparing genes or proteins between species, or when identifying genetic variations or diseases between individuals of a species.
+In the context of bioinformatics, sequences of amino acids make up proteins, which perform a multitude of biological functions, and sequences of nucleotides make up DNA which encodes for the construction of these proteins and controls their usage.
+
+There is a vast quantity of sequenced protein and DNA data available, for example the GRC’s most recent human genome assembly contains over 3.1 billion base pairs \cite{GRCh38}.
+Attempting to find patterns is simply intractable for humans, and sequence alignment algorithms are used instead to identify similar regions for further investigation.
+This can be particularly helpful given a labelled database of sequences, such as the UniProt Knowledgebase \cite{UniProt}, a database of proteins.
+Using such a database, new proteins can be aligned against database sequences to find the most similar proteins that have been previously studied, providing clues on the properties of the new protein.
+
+\section{Previous work}
+The Smith-Waterman algorithm \cite{SW_Original} is often used to align sequences, yet it is computationally expensive, requiring $O(NM)$ space and time to run in its original form, for sequences of lengths $N$ and $M$ (see \cref{sec:SW_Complexity}).
+Its structure exposes a significant degree of parallelism, and there have been previous investigations into implementing it on GPUs and FPGAs for increased performance when compared to CPUs.
+Investigating ways of accelerating this algorithm may lead to time and money being saved, though hardware availability is often the constraining factor in practice.
+For this reason most alignments are performed on CPUs and GPUs, but it is academically interesting to explore producing a hardware accelerator nonetheless.
+
+In this project I use and combine some previous approaches to produce implementations for each platform and compare them.
+This was done several years ago by Benkrid et al. \cite{Benkrid12}, though I used more modern hardware.
+This project repeats their experiment, and I investigated the impact of different scoring mechanisms on performance, which was not done by Benkrid et al.

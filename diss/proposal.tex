@@ -1,0 +1,28 @@
+% !TeX root = ./proposal.tex
+
+% This is a LaTeX driving document to produce a standalone copy
+% of the project proposal held in propbody.tex.  Notice that
+% propbody can be used in this context as well as being incorporated
+% in the dissertation (see diss.tex).
+
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[british,UKenglish]{babel}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{biblatex}
+\addbibresource{refs.bib}
+\defbibheading{secbib}[\bibname]{%
+  \section*{References}%
+  \markboth{#1}{#1}}
+
+\newcommand{\candidate}{B. Marshall}
+
+\begin{document}
+
+\vfil
+
+\include{propbody}
+\printbibliography[heading=secbib]
+
+\end{document}

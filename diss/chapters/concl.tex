@@ -1,0 +1,39 @@
+% !TeX root = ../diss.tex
+
+\chapter{Conclusions}
+
+In conclusion, this project was successful.
+The core criteria, producing single and multi-threaded C, and CUDA implementations of the Smith-Waterman algorithm, were achieved.
+As was one of the extensions, to implement and instantiate the algorithm on an FPGA.
+Investigations into the impact of different ways of scoring alignments were performed, and the performance of the different implementations were compared.
+
+\section{Results}
+\label{sec:Concl_results}
+
+As I initially suspected, the Smith-Waterman algorithm was amenable to parallelisation, with the GPU implementation outperforming the CPU implementation for large sequences.
+However, smaller alignments have less scope for parallelisation, and the CPU could outperform the GPU with better sequential performance.
+
+I only had time to make an implementation for the FPGA that could align short sequences.
+The accelerator I designed was highly specialised and was able to do a lot of work each clock cycle, albeit at a modest clock speed.
+For these short sequences, it outperformed the CPU and GPU implementations by a significant margin.
+
+\section{Further work}
+\label{sec:Concl_further work}
+
+I cannot think of any major insufficiencies in the C and CUDA implementations I made.
+Undoubtedly improvements could be made by hand-optimising the assembly code, but I suspect this would not yield major improvements.
+An extension which I did not have time for was to modify my C implementation to use the Streaming SIMD Extensions of the x86 platform to improve the performance of my CPU-based implementation, and this could be investigated.
+
+However, the FPGA implementation was ambitious and has obvious areas for improvement.
+Alone it could have been the basis for a whole Part II Project, but using good planning I used the time I had to produce a limited design that could align sequences.
+Two areas of improvement are:
+\begin{itemize}
+\item Modifying the design to align much longer sequences, using the linear space approach (\cref{sec:SW_Linear_Prep}).
+This would require the original, quadratic space implementation to perform the alignments of sufficiently small subproblems.
+Either a larger FPGA could be used where both designs could be instantiated together, or perhaps they could be combined where the accelerator chooses its alignment algorithm based on sequence length.
+
+\item Improving the clock speed of the design through pipelining.
+The critical paths in my design were inside of processing elements, performing long sequences of arithmetic and comparisons each clock cycle.
+This arithmetic could be divided into pipeline stages, allowing the clock to run at a higher frequency.
+
+\end{itemize}

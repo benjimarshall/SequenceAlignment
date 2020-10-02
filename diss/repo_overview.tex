@@ -1,0 +1,50 @@
+% !TeX root = ./diss.tex
+
+\DTsetlength{0.2em}{1em}{0.2em}{1pt}{4pt}
+\begin{figure}[H]
+\dirtree{%
+    .1 /.
+    .2 cpu\_code\DTcomment{C implementation}.
+        .3 correctness\_tester.c \DTcomment{Basis for correctness testing across implementations}.
+        .3 helpers.c \DTcomment{Utility functions}.
+        .3 main.c \DTcomment{Entry point; rudimentary command line interface}.
+        .3 nw.c \DTcomment{Initial global alignment implementation}.
+        .3 sw.c \DTcomment{Local alignment implementation, quadratic and linear space}.
+        .3 swParallel.c \DTcomment{Multi-threaded local alignment implementation}.
+        .3 swGotoh.c \DTcomment{Affine gap implementation, quadratic and linear space}.
+        .3 swGotohParallel.c \DTcomment{Multi-threaded affine gap alignment implementation}.
+    .2 gpu\_code\DTcomment{CUDA implementation}.
+        .3 helpers.cu \DTcomment{Utility functions}.
+        .3 main.cu \DTcomment{Entry point; rudimentary command line interface}.
+        .3 sw.cu  \DTcomment{Local alignment implementation, quadratic and linear space}.
+        .3 swSingleBlock.cu \DTcomment{Quadratic space local alignment, without block-parallelism}.
+        .3 swGotoh.cu \DTcomment{Affine gap implementation}.
+    .2 fpga\_code\DTcomment{FPGA implementation}.
+        .3 c\_interface \DTcomment{C Interface for ARM HPS}.
+            .4 sequence\_reader.c \DTcomment{Reading sequences from files}.
+            .4 start.c \DTcomment{Interface with FPGA}.
+        .3 systemverilog \DTcomment{SystemVerilog implementation}.
+            .4 datatypesPkg.sv \DTcomment{Types of signals used}.
+            .4 macro.vh \DTcomment{Implementation-wide macros to change types of sequences}.
+            .4 pe\_bram.v \DTcomment{BRAM for grid of pointers}.
+            .4 fifo\_16b\_1024w.v \DTcomment{BRAM FIFO for storing previous column of scores}.
+            .4 backtrace.sv \DTcomment{Backtracing through a grid of registers}.
+            .4 backtrace\_with\_ram.sv \DTcomment{Backtracing through a grid in M10K BRAM}.
+            .4 pe.sv \DTcomment{Single processing element where pointer grid is registers}.
+            .4 pe\_with\_ram.sv \DTcomment{Single processing element where pointer grid is BRAM}.
+            .4 short\_solver.sv \DTcomment{Systolic array for sequences the length of the array}.
+            .4 short\_solver\_avalon.sv \DTcomment{Avalon FPGA-HPS interface for \lstinline{short_solver}}.
+            .4 med\_solver.sv \DTcomment{Systolic array for sequences of lengths $1024 \times 1536$}.
+            .4 med\_solver\_with\_ram.sv \DTcomment{\lstinline{med_solver} but using BRAM for pointer grid}.
+            .4 med\_solver\_with\_ram\_avalon.sv \DTcomment{Main Avalon FPGA-HPS interface}.
+            .4 tb\_blosum.sv \DTcomment{Various testbenches (\lstinline{tb_*})}.
+            .4 tb\_med\_solver.sv .
+            .4 tb\_med\_solver\_with\_ram.sv .
+            .4 tb\_pe.sv .
+            .4 tb\_short\_seq.sv .
+            .4 tb\_short\_solver.sv .
+        .3 quartus \DTcomment{Configuration files from my Quartus Lite project}.
+}
+\caption{Header files (of extensions \lstinline{.h} and \lstinline{.cuh}) have been omitted from for brevity, and always correspond to a code file. Makefiles have also been omitted.}
+\label{fig:Repo_tree}
+\end{figure}

@@ -1,0 +1,75 @@
+% !TeX root = ./progress_report.tex
+
+% This is a LaTeX driving document to produce a standalone copy
+% of the project proposal held in prop body.tex.  Notice that
+% prop body can be used in this context as well as being incorporated
+% in the dissertation (see diss.tex).
+
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[british,UKenglish]{babel}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{biblatex}
+\addbibresource{refs.bib}
+\defbibheading{secbib}[\bibname]{%
+  \section*{References}%
+  \markboth{#1}{#1}}
+
+\begin{document}
+
+% Draft #1 (final?)
+
+\vfil
+
+\centerline{\Large Computer Science Tripos -- Part II -- Progress Report}
+\vspace{0.4in}
+\centerline{\Huge Parallelising Sequence Alignment}
+\vspace{0.4in}
+\centerline{\large B. Marshall, Sidney Sussex College}
+\vspace{0.1in}
+\centerline{\large 29 January 2020}
+\vspace{0.25in}
+
+\noindent
+{\bf Project Supervisor:} Mr P.~Rugg
+
+\noindent
+{\bf Director of Studies:} Mr M. Ireland
+
+\noindent
+{\bf Project Overseers:} Prof~J. Daugman  \& Dr~A. Madhavapeddy
+
+\noindent
+{\bf Student Email Address:} bjm58@cam.ac.uk
+
+% Main document
+
+\subsection*{Completed Work}
+
+In short, the purpose of the project is implement a Local Sequence Alignment algorithm on different computer architectures, and evaluate the performance between them.
+The core implementation is an implementation in single-threaded C, multi-threaded C, and in CUDA.
+This has been completed, and based on a cursory examination it seems that there are significant differences in their performance characteristics, which will provide interesting avenues for evaluation.
+
+One of the major extensions to this project has been to implement a sequence alignment algorithm in Verilog, to be synthesised and run on an FPGA.
+This also has been done, ahead of schedule.
+In the original work plan, this was scheduled to run till 16th February but this has been completed since 28th January.
+
+No significant unexpected difficulties arose doing this this work, but I slightly underestimated how long it would take me to learn CUDA and write an implementation that had sensible performance characteristics.
+However, this was overcome by spending a bit more time on it than planned, taking from the slack time allocated over the vacation, which is precisely why I allocated such time.
+
+\subsection*{Outstanding Work}
+
+Another extension was to modify my C implementation to use vectorised CPU instructions.
+I have not done this, though I may do so later in term if I have time after evaluating my implementations and having drafted my dissertation.
+
+I have completed all work according to my project plan up to 16th Feb, with the exception of the extension discussed above and also writing the Preparation chapter of my dissertation.
+Considering that I needed to do significant preparation to implement the FPGA extension, it did not make sense to write that chapter having not done that.
+Considering that my implementation phase finished two weeks ahead of schedule, I have no concerns about this.
+I plan to start quantitative evaluation first before I begin writing, bringing that forward from 17th February -- 15th March by two weeks, and to use the time afterwards to write the Preparation chapter. This will result in me working to the original plan by the 15th March again.
+
+
+\end{document}
+
+
+
