@@ -21,6 +21,8 @@ manage, and the FPGA design in particular had a lot of scope for optimisation, w
 my development files. It is much tidier and comes without the large diagnostic files that probably should have never
 been checked into Git in the first place...
 
+You can read my dissertation [here](./diss/diss.pdf).
+
 ## Uses of this repository
 
 This project is finished as far as I'm concerned, and I will not be maintaining it. There are other implementations for
